@@ -1,0 +1,12 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Ignorar PDFs pesados de apresentações anexadas para evitar erro no push do GitHub
+public/assets/aistudio/*.pdf
+*.pdf
