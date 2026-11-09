@@ -101,10 +101,15 @@ O projeto foi arquitetado para ser leve, resiliente e **Zero-Cost**.
 * Estatística descritiva e inferencial (Pearson, Médias Ponderadas).
 * Estrutura preparada para integração com LLMs (Google Gemini / OpenAI) para busca semântica e relatórios.
 
-🏗️ Arquitetura do Sistema
-O Melodia CCB adota uma arquitetura Client-Side Serverless, focada em resiliência, privacidade e custo zero de infraestrutura.
+Perfeito! Aqui está a **Parte 2** do README (Arquitetura, Segurança, Impacto Social, IA, Fundamentação Curricular e Galeria de Telas).
 
-text
+---
+
+## 🏗️ Arquitetura do Sistema
+
+O Melodia CCB adota uma arquitetura **Client-Side Serverless**, focada em resiliência, privacidade e custo zero de infraestrutura.
+
+```text
 melodia-ccb/
 │
 ├── electron/                # Processo principal do Electron (Main & Preload)
@@ -147,77 +152,82 @@ melodia-ccb/
 ├── vite.config.ts
 ├── tsconfig.json
 └── README.md
-🔐 Segurança e Privacidade (LGPD)
-A segurança foi tratada como pilar fundamental, especialmente por lidar com dados de menores e informações sensíveis de uma instituição religiosa.
-
-1. Isolamento de Dados (RBAC)
-Coordenador: Visão macroscópica, gestão de turmas, relatórios e backups.
-
-Professor: Visão isolada. Acessa apenas suas turmas e alunos. Não vê o histórico global.
-
-Aluno: Portal privativo. Acessa apenas suas notas e evolução. Zero acesso à comparação com outros alunos.
-
-2. Criptografia de Ponta
-Backups Blindados: Os arquivos exportados usam a extensão proprietária .melodia e são criptografados com AES-GCM 256-bit.
-
-Restauração Autenticada: Um backup só pode ser restaurado mediante a inserção da "Senha Master" institucional.
-
-3. Segurança no Electron
-contextIsolation: true e nodeIntegration: false.
-
-Exposição de APIs limitadas via contextBridge.
-
-Validação rigorosa de caminhos de arquivos e dados recebidos via IPC.
-
-4. Audit Trail (Trilha de Auditoria)
-Livro-caixa inalterável (Read-Only) que registra metadados exatos de eventos críticos: elevação de privilégios, alteração de notas, exportação de backups e logins.
-
-🤖 Inteligência Artificial e Analytics
-O sistema não apenas armazena dados; ele extrai inteligência deles.
-
-Algoritmo de Projeção (Gantt): Cruza a frequência semanal histórica com as notas multidimensionais para prever a data exata de oficialização de cada aluno.
-
-Correlação Linear de Pearson (r = 0.83): O sistema comprova matematicamente que a presença em sala dita a excelência musical, permitindo gestão por exceção (Faróis de Saúde).
-
-Detecção Ativa de Gargalos: Identifica se há uma concentração anormal de alunos retidos em uma fase específica (ex: Fase 2 - Técnica) e prescreve a intervenção pedagógica (ex: reduzir BPM do metrônomo, focar em postura).
-
-Preparação para IA Generativa: Estrutura pronta para integração com LLMs (ex: Google Gemini) para busca semântica no acervo, geração de relatórios automáticos e assistência administrativa.
-
-🌍 Impacto Social e ODS (ONU)
-O projeto foi concebido como uma Tecnologia Social, alinhada diretamente às metas globais de desenvolvimento sustentável:
-
-ODS 4 (Educação de Qualidade): Garantia de ensino equitativo. O monitoramento inteligente anti-evasão operacionaliza a Zona de Desenvolvimento Proximal (Vygotsky), apoiando o aluno onde ele encontra a barreira.
-
-ODS 9 (Inovação e Infraestrutura): Gestão cultural digital e serverless. Superação de barreiras de infraestrutura local sem custos de servidor, consolidando o Construtivismo (Piaget).
-
-ODS 10 (Redução das Desigualdades): Democratização radical do acesso à formação musical de excelência, com avaliação multidimensional justa.
-
-🎓 Fundamentação Curricular (Engenharia de Software)
-Este projeto é a aplicação prática de uma grade curricular robusta em Tecnologia:
-
-1º Semestre: Lógica, Arquitetura de Computadores, ESG e Inclusão (Design acessível para instrutores com pouca fluência digital).
-
-2º Semestre: Modelagem de Banco de Dados (SQL), Data Science, Cloud Computing (Decisão pela arquitetura Serverless client-side).
-
-3º Semestre: Data Engineering (Pipeline ETL), Visualização de Dados (Recharts), IA Explicável (XAI) e Machine Learning (Projeção Gantt).
-
-4º Semestre: Engenharia de Software orientada a IA, Gestão de Riscos (LGPD), NLP (Varredura semântica dos diários) e Liderança em Transformação Digital.
-
-5º Semestre: Business Intelligence (Dashboards de KPIs), Cyber Security (Criptografia AES-256), Governança de TI (Audit Trail) e Comunicação.
-
-📱 Galeria de Telas (Screenshots)
-(Dica: Substitua os links abaixo pelas imagens reais do projeto na pasta /docs ou /assets do seu repositório)
-
-Tela de Login (Isolamento por Perfil)	Dashboard da Torre de Controle
-<img src="https://via.placeholder.com/400x250?text=Login+RBAC" alt="Login" />	<img src="https://via.placeholder.com/400x250?text=Dashboard+KPIs" alt="Dashboard" />
-Boletim Inteligente (Radar)	Gantt Preditivo
-<img src="https://via.placeholder.com/400x250?text=Radar+de+Competencias" alt="Boletim" />	<img src="https://via.placeholder.com/400x250?text=Gantt+Preditivo" alt="Gantt" />
-Diário de Classe	Importador ETL (Legado)
-<img src="https://via.placeholder.com/400x250?text=Diario+de+Classe" alt="Diario" />	<img src="https://via.placeholder.com/400x250?text=Importador+Excel" alt="ETL" />
-
-Aqui está a **Parte 3** e final do README. Ela contém todo o guia técnico para que outros desenvolvedores possam clonar, rodar, testar e contribuir com o projeto.
+```
 
 ---
+
+## 🔐 Segurança e Privacidade (LGPD)
+
+A segurança foi tratada como pilar fundamental, especialmente por lidar com dados de menores e informações sensíveis de uma instituição religiosa.
+
+### 1. Isolamento de Dados (RBAC)
+* **Coordenador:** Visão macroscópica, gestão de turmas, relatórios e backups.
+* **Professor:** Visão isolada. Acessa apenas suas turmas e alunos. Não vê o histórico global.
+* **Aluno:** Portal privativo. Acessa apenas suas notas e evolução. **Zero acesso à comparação com outros alunos.**
+
+### 2. Criptografia de Ponta
+* **Backups Blindados:** Os arquivos exportados usam a extensão proprietária `.melodia` e são criptografados com **AES-GCM 256-bit**.
+* **Restauração Autenticada:** Um backup só pode ser restaurado mediante a inserção da "Senha Master" institucional.
+
+### 3. Segurança no Electron
+* `contextIsolation: true` e `nodeIntegration: false`.
+* Exposição de APIs limitadas via `contextBridge`.
+* Validação rigorosa de caminhos de arquivos e dados recebidos via IPC.
+
+### 4. Audit Trail (Trilha de Auditoria)
+* Livro-caixa inalterável (Read-Only) que registra metadados exatos de eventos críticos: elevação de privilégios, alteração de notas, exportação de backups e logins.
+
+---
+
+## 🤖 Inteligência Artificial e Analytics
+
+O sistema não apenas armazena dados; ele **extrai inteligência** deles.
+
+* **Algoritmo de Projeção (Gantt):** Cruza a frequência semanal histórica com as notas multidimensionais para prever a data exata de oficialização de cada aluno.
+* **Correlação Linear de Pearson (r = 0.83):** O sistema comprova matematicamente que a presença em sala dita a excelência musical, permitindo gestão por exceção (Faróis de Saúde).
+* **Detecção Ativa de Gargalos:** Identifica se há uma concentração anormal de alunos retidos em uma fase específica (ex: Fase 2 - Técnica) e prescreve a intervenção pedagógica (ex: reduzir BPM do metrônomo, focar em postura).
+* **Preparação para IA Generativa:** Estrutura pronta para integração com LLMs (ex: Google Gemini) para busca semântica no acervo, geração de relatórios automáticos e assistência administrativa.
+
+---
+
+## 🌍 Impacto Social e ODS (ONU)
+
+O projeto foi concebido como uma **Tecnologia Social**, alinhada diretamente às metas globais de desenvolvimento sustentável:
+
+* **ODS 4 (Educação de Qualidade):** Garantia de ensino equitativo. O monitoramento inteligente anti-evasão operacionaliza a Zona de Desenvolvimento Proximal (Vygotsky), apoiando o aluno onde ele encontra a barreira.
+* **ODS 9 (Inovação e Infraestrutura):** Gestão cultural digital e serverless. Superação de barreiras de infraestrutura local sem custos de servidor, consolidando o Construtivismo (Piaget).
+* **ODS 10 (Redução das Desigualdades):** Democratização radical do acesso à formação musical de excelência, com avaliação multidimensional justa.
+
+---
+
+## 🎓 Fundamentação Curricular (Engenharia de Software)
+
+Este projeto é a aplicação prática de uma grade curricular robusta em Tecnologia:
+
+* **1º Semestre:** Lógica, Arquitetura de Computadores, ESG e Inclusão (Design acessível para instrutores com pouca fluência digital).
+* **2º Semestre:** Modelagem de Banco de Dados (SQL), Data Science, Cloud Computing (Decisão pela arquitetura Serverless client-side).
+* **3º Semestre:** Data Engineering (Pipeline ETL), Visualização de Dados (Recharts), IA Explicável (XAI) e Machine Learning (Projeção Gantt).
+* **4º Semestre:** Engenharia de Software orientada a IA, Gestão de Riscos (LGPD), NLP (Varredura semântica dos diários) e Liderança em Transformação Digital.
+* **5º Semestre:** Business Intelligence (Dashboards de KPIs), Cyber Security (Criptografia AES-256), Governança de TI (Audit Trail) e Comunicação.
+
+---
+
+## 📱 Galeria de Telas (Screenshots)
+
+*(Dica: Substitua os links abaixo pelas imagens reais do projeto na pasta `/docs` ou `/assets` do seu repositório)*
+
+| Tela de Login (Isolamento por Perfil) | Dashboard da Torre de Controle |
+| :---: | :---: |
+| <img src="https://via.placeholder.com/400x250?text=Login+RBAC" alt="Login" /> | <img src="https://via.placeholder.com/400x250?text=Dashboard+KPIs" alt="Dashboard" /> |
+
+| Boletim Inteligente (Radar) | Gantt Preditivo |
+| :---: | :---: |
+| <img src="https://via.placeholder.com/400x250?text=Radar+de+Competencias" alt="Boletim" /> | <img src="https://via.placeholder.com/400x250?text=Gantt+Preditivo" alt="Gantt" /> |
+
+| Diário de Classe | Importador ETL (Legado) |
+| :---: | :---: |
+| <img src="https://via.placeholder.com/400x250?text=Diario+de+Classe" alt="Diario" /> | <img src="https://via.placeholder.com/400x250?text=Importador+Excel" alt="ETL" /> |
+
 
 ## 🔧 Instalação e Pré-requisitos
 
